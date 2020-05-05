@@ -24,11 +24,13 @@ with open(dependencies_file, 'rt') as fin:
     dependencies = list(filter(lambda line: not line.startswith('#'), fin.read().splitlines()))
 
 # compile description
+underline = '=' * (len(library_name) + len(short_description) + 2)
 description = """
 {name}: {short}
-=======================================================
+{underline}
+
 {long}
-""".format(name=library_name, short=short_description, long=full_description)
+""".format(name=library_name, short=short_description, long=full_description, underline=underline)
 
 # setup package
 setup(
