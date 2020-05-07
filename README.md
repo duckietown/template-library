@@ -1,11 +1,11 @@
 
-![CircleCI](https://circleci.com/gh/duckietown/template-library.svg?style=svg&circle-token=8bb1a7723db3a72ed58a7c2aa93ee088b43b1e80) 
-See [details here](https://circleci.com/gh/duckietown/template-library).
-
 <!-- Note: there is a "branch" in the url -->
 
-![codecov](https://codecov.io/gh/duckietown/driving-games/branch/daffy/graph/badge.svg?token=w8Sk4CKFpI) 
-See [details here](https://codecov.io/gh/duckietown/template-library) (for daffy).  
+![CircleCI](https://circleci.com/gh/duckietown/template-library/tree/more.svg?style=svg)
+[Details.](https://circleci.com/gh/duckietown/template-library/tree/more)
+
+![codecov](https://codecov.io/gh/duckietown/template-library/branch/more/graph/badge.svg) 
+See [details here](https://codecov.io/gh/duckietown/template-library). 
  
 
 # Template for pure Python libraries in Duckietown
@@ -14,20 +14,28 @@ This template provides a boilerplate repository for developing Python libraries 
 
 We have the following features:
 
-* Unit-tests using Nose.
+* Unit-tests using [Nose].
 * Building/testing in Docker environment locally.
-* Integration with CircleCI for automated testing.
-* Integration with CodeCov for displaying coverage result.
-* Integration with Sphinx to build code docs. (So far, only built locally)
-* Jupyter notebooks, which are run also in CircleCI as tests.
-* Version bump using Bumpversion.
-* Code formatting using Black.
+* Integration with [CircleCI] for automated testing.
+* Integration with [CodeCov] for displaying coverage result.
+* Integration with [Sphinx] to build code docs. (So far, only built locally)
+* [Jupyter] notebooks, which are run also in CircleCI as tests.
+* Version bump using [Bumpversion].
+* Code formatting using [Black].
 * Command-line program for using the library.
+
+
+[Black]: https://github.com/psf/black
+[CircleCI]: https://circleci.com/gh/duckietown
+[Jupyter]:  https://jupyter.org/
+[Bumpversion]: https://github.com/peritus/bumpversion
+[Nose]: https://nose.readthedocs.io/en/latest/
+
+## Anatomy of the repo
+
 
 The fake library is called "`duckietown_pondcleaner`" and there is one command-line tool
 called `dt-pc-demo.`
-
-## Anatomy
 
 *Warning*: Do not remove files/features just because you don't understand. Ask instead.
 See: [Chesterson's fence](https://en.wikipedia.org/wiki/Wikipedia:Chesterton%27s_fence).
