@@ -18,7 +18,7 @@ We have the following features:
 * Building/testing in Docker environment locally.
 * Integration with [CircleCI] for automated testing.
 * Integration with [CodeCov] for displaying coverage result.
-* Integration with [Sphinx] to build code docs. (So far, only built locally)
+* Integration with [Sphinx] to build code docs. (So far, only built locally.)
 * [Jupyter] notebooks, which are run also in CircleCI as tests.
 * Version bump using [Bumpversion].
 * Code formatting using [Black].
@@ -48,23 +48,27 @@ See: [Chesterson's fence](https://en.wikipedia.org/wiki/Wikipedia:Chesterton%27s
 
 * `.bumpversion.cfg`: Configuration for bumpversion
 
-* `Makefile`:
+* `Makefile`: ... 
 
 ### Python packaging
 
 * `requirements.txt`: Contains the *pinned* versions of your requirement that
   are used to run tests. 
    
-* `MANIFEST.in`:
+* `MANIFEST.in`: Deselects the tests to be included in the egg.
  
 * `setup.py`: Containes meta information, definition of the scripts, and 
   the dependencies information.   
 
 ### Python code
 
-* `src/`
+* `src/` - This is the path that you should set as "sources root" in your tool
 
-* `src/duckietown_pondcleaner`
+* `src/duckietown_pondcleaner`: Contains the code.
+
+* `src/duckietown_pondcleaner/__init__.py`: Contains the `__version__` library.
+
+* `src/duckietown_pondcleaner_tests`: Contains the tests - not included in the egg.
 
 ### Docker testing
 
@@ -76,26 +80,41 @@ These are files to build and run a testing container.
 
 ### Sphinx
 
+* `src/conf.py`: Sphinx settings
+
+* `src/index.rst`: Sphinx main file
+
+* `src/duckietown_pondcleaner/index.rst`: Documentation for the package
+
+
 ### Coverage
 
-* `.coveragerc`: 
+* `.coveragerc`: Options for code coverage. 
 
 
+### Notebooks
 
-## How to use it
+* `notebooks`: Notebooks that are run also as a test.
 
-### 1. Fork this repository
+* `notebooks-extra`: Other notebooks (not run as test)
+
+* `notebooks/*.ipynb`: The notebooks themselves.
+
+
+## Cloning/forking/customizing
+
+### Fork this repository
 
 Use the fork button in the top-right corner of the Github page 
 to fork this template repository.
 
-### 2. Create a new repository
+### Create a new repository
 
 Create a new repository on Github while specifying the newly 
 forked template repository as a template for your new repository.
 
 
-### 3. Fill in the blanks
+### Fill in the blanks
 
 Build a library by following these steps:
 
@@ -103,6 +122,43 @@ Build a library by following these steps:
 - Place your Python packages inside `src/`;
 - List the python dependencies in the file `dependencies.txt`;
 - Update the appropriate section in the file `setup.py`;
+
+Make sure that there are no other remains:
+
+    grep -r . pondcleaner
+
+Update the branch names in `README.md`.
+
+### Other set up (for admins)
+
+The following are necessary steps for admins to do:
+
+1. Activate on CircleCI. Make one build successful.
+
+2. Activate on CodeCov. Get the `CODECOV_TOKEN`. Put this token in CircleCI environment. 
+
+-----------
+
+
+## How to use this library
+
+
+
+### Test the code
+
+Test the code using Docker by:
+
+    make test-docker
+    
+This runs the test using a Docker container built from scratch
+with the pinned dependencies in `requirements.txt`.
+This is equivalent to what is run on CircleCI.
+
+To run the tests natively, use:
+
+    make test 
+
+
 
 
 ### 4. Build it!
@@ -115,17 +171,27 @@ inside `dist`. You can then use `PYTHON_PATH=./dist python ...` to run a
 Python interpreter that will pick up the library installed in `./dist`.
 
 
-### 5. Release a new version
+### Releasing a new version
 
-**DO NOT** change the version manually in your files, use the 
-CLI tool `bumpversion` instead. If you need to include the version
-in a new file, list it inside the file `.bumpversion.cfg` using the
+
+### Releasing a new version
+
+**DO NOT** change the version manually in your files, use the  CLI tool `bumpversion` instead.
+
+The command is:
+
+    make bump    # bump the version, tag the tree
+    make upload  # upload to PyPy 
+
+(You need to have admin permissions on PyPy)
+
+If you need to include the version in a new file, list it inside the file `.bumpversion.cfg` using the
 syntax `[bumpversion:file:<FILE_PATH>]`.
 
+## Notes on using the notebooks
 
+Always clean the notebooks before committing them:
 
+    make -C notebooks cleanup
 
-# Setting up
-
-* Activate on CircleCI. Make one build successful.
-* Activate on CodeCov. Get the CODECOV_TOKEN. Put this token in CircleCI environment. 
+If you don't think you can be diligent, then add the notebooks using Git LFS.

@@ -29,6 +29,8 @@ all:
 	@echo "  make build run"
 	@echo "  make docs "
 	@echo "  make test coverage-combine coverage-report"
+	@echo "  "
+	@echo "  make -C notebooks clean all"
 
 
 
@@ -68,6 +70,10 @@ build-no-cache:
 	docker build --no-cache -t $(tag) .
 
 
+test-docker: build
+	docker run -it $(tag) make test
+
+
 run:
 	mkdir -p out-docker
 	docker run -it -v $(PWD)/out-docker:/out $(tag) dt-pc-demo
@@ -75,6 +81,7 @@ run:
 run-with-mounted-src:
 	mkdir -p out-docker
 	docker run -it -v $(PWD)/src:/duckietown_pondcleaner/src:ro -v $(PWD)/out-docker:/out $(tag) dt-pc-demo
+
 
 coverage-report:
 	coverage html  -d $(coverage_dir)
