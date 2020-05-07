@@ -159,39 +159,62 @@ To run the tests natively, use:
     make test 
 
 
+### Development
 
+We assume you have already setup a Python virtual environment.
 
-### 4. Build it!
+Then we suggest you run:
 
-Run `pip install -U ./` from the repository directory to build and
+    python setup.py develop 
+    
+This will install the library in an editable way (rather than copying the sources somewhere else).
+
+If you don't want to install the deps, do:
+
+    python setup.py develop  --no-deps
+    
+For example, this is done in the Dockerfile so that 
+we know we are only using the dependencies in `requirements.txt` with the 
+exact pinned version.
+
+<!--Run `pip install -U ./` from the repository directory to build and
 install the library. To avoid installing a temporary library system-wide,
 we suggest you make a temporary directory `dist`, pass the flag `-t ./dist`
 to the `pip` command above, this will tell pip to install the library 
 inside `dist`. You can then use `PYTHON_PATH=./dist python ...` to run a 
-Python interpreter that will pick up the library installed in `./dist`.
+Python interpreter that will pick up the library installed in `./dist`.--->
 
-
-### Releasing a new version
-
-
-### Releasing a new version
-
-**DO NOT** change the version manually in your files, use the  CLI tool `bumpversion` instead.
-
-The command is:
-
-    make bump    # bump the version, tag the tree
-    make upload  # upload to PyPy 
-
-(You need to have admin permissions on PyPy)
-
-If you need to include the version in a new file, list it inside the file `.bumpversion.cfg` using the
-syntax `[bumpversion:file:<FILE_PATH>]`.
-
-## Notes on using the notebooks
+ 
+### Notes on using the notebooks
 
 Always clean the notebooks before committing them:
 
     make -C notebooks cleanup
 
 If you don't think you can be diligent, then add the notebooks using Git LFS.
+
+### Releasing a new version
+
+#### Updating the version
+
+The first step is to change the version and tag the repo. 
+**DO NOT** change the version manually; use the CLI tool `bumpversion` instead.
+
+The tool can be called by:
+
+    make bump    # bump the version, tag the tree
+    
+If you need to include the version in a new file, list it inside the file `.bumpversion.cfg` using the
+syntax `[bumpversion:file:<FILE_PATH>]`.
+
+#### Releasing the package
+
+The next step is to upload the package to PyPy. 
+We use [twine]. Invoke using: 
+ 
+    make upload  # upload to PyPy 
+
+For this step, uou need to have admin permissions on PyPy.
+
+
+[twine]: https://pypi.org/project/twine/
