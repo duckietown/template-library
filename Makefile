@@ -1,4 +1,4 @@
-tag=driving_games
+tag=duckietown_pondcleaner
 
 regular_packages=duckietown_pondcleaner
 test_packages=duckietown_pondcleaner_tests
@@ -69,13 +69,11 @@ build-no-cache:
 
 run:
 	mkdir -p out-docker
-	docker run -it -v $(PWD)/out-docker:/out $(tag) \
-		dg-demo -o /out/result --reset -c "rparmake"
-
+	docker run -it -v $(PWD)/out-docker:/out $(tag) dt-pc-demo
+#
 run-with-mounted-src:
 	mkdir -p out-docker
-	docker run -it -v $(PWD)/src:/driving_games/src:ro -v $(PWD)/out-docker:/out $(tag) \
-		dg-demo -o /out/result --reset -c "rparmake"
+	docker run -it -v $(PWD)/src:/duckietown_pondcleaner/src:ro -v $(PWD)/out-docker:/out $(tag) dt-pc-demo
 
 coverage-report:
 	coverage html  -d $(coverage_dir)
