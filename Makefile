@@ -2,7 +2,7 @@ tag=driving_games
 
 regular_packages=duckietown_pondcleaner
 test_packages=duckietown_pondcleaner_tests
-cover_packages=$(test_packages),$(test_packages)
+cover_packages=$(test_packages),$(regular_packages)
 
 
 
