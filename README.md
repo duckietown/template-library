@@ -24,7 +24,8 @@ We have the following features:
 * Code formatting using [Black].
 * Command-line program for using the library.
 
-
+[CodeCov]: https://codecov.io/gh/duckietown
+[Sphinx]:  https://www.sphinx-doc.org/en/master/
 [Black]: https://github.com/psf/black
 [CircleCI]: https://circleci.com/gh/duckietown
 [Jupyter]:  https://jupyter.org/
@@ -33,8 +34,7 @@ We have the following features:
 
 ## Anatomy of the repo
 
-
-The fake library is called "`duckietown_pondcleaner`" and there is one command-line tool
+This repository describes a library called "`duckietown_pondcleaner`" and there is one command-line tool
 called `dt-pc-demo.`
 
 *Warning*: Do not remove files/features just because you don't understand. Ask instead.
@@ -103,6 +103,8 @@ These are files to build and run a testing container.
 
 -----------
 
+-----------
+
 
 ## Cloning/forking/customizing
 
@@ -139,6 +141,8 @@ The following are necessary steps for admins to do:
 1. Activate on CircleCI. Make one build successful.
 
 2. Activate on CodeCov. Get the `CODECOV_TOKEN`. Put this token in CircleCI environment. 
+
+-----------
 
 -----------
 
@@ -188,6 +192,13 @@ inside `dist`. You can then use `PYTHON_PATH=./dist python ...` to run a
 Python interpreter that will pick up the library installed in `./dist`.--->
 
  
+### Adding tests
+
+To add another tests, add files with the name `test_*py` in the 
+package `duckietown_podcleaner_tests`. The name is important.
+
+Tip: make sure that the tests are actually run looking at the coverage results.
+
 ### Notes on using the notebooks
 
 Always clean the notebooks before committing them:
