@@ -8,29 +8,57 @@ See [details here](https://circleci.com/gh/duckietown/template-library).
 See [details here](https://codecov.io/gh/duckietown/template-library) (for daffy).  
  
 
-
 # Template for pure Python libraries in Duckietown
 
-This template provides a boilerplate repository for developing 
-Python libraries in Duckietown.
+This template provides a boilerplate repository for developing Python libraries in Duckietown.
+
+We have the following features:
+
+* Unit-tests using Nose.
+* Building/testing in Docker environment locally.
+* Integration with CircleCI for automated testing.
+* Integration with CodeCov for displaying coverage result.
+* Integration with Sphinx to build code docs. (So far, only built locally)
+* Jupyter notebooks, which are run also in CircleCI as tests.
+* Version bump using Bumpversion.
+* Code formatting using Black.
+* Command-line program for using the library.
+
+The fake library is called "`duckietown_pondcleaner`" and there is one command-line tool
+called `dt-pc-demo.`
+
+## Anatomy
+
+
+
+* `requirements.txt`: Contains the *pinned* versions of your requirement that
+  are used to run tests.
+
+* `.dockerignore`: Describes what files go in the docker container.
+
+* `.dtproject`: ...
+
+* `setup.py`: 
+
 
 
 ## How to use it
 
 ### 1. Fork this repository
 
-Use the fork button in the top-right corner of the github page 
+Use the fork button in the top-right corner of the Github page 
 to fork this template repository.
 
 ### 2. Create a new repository
 
-Create a new repository on github.com while specifying the newly 
+Create a new repository on Github while specifying the newly 
 forked template repository as a template for your new repository.
 
 
 ### 3. Fill in the blanks
 
 Build a library by following these steps:
+
 - Clone the newly created repository;
 - Place your Python packages inside `src/`;
 - List the python dependencies in the file `dependencies.txt`;
