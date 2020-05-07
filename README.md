@@ -29,16 +29,48 @@ called `dt-pc-demo.`
 
 ## Anatomy
 
+*Warning*: Do not remove files/features just because you don't understand. Ask instead.
+See: [Chesterson's fence](https://en.wikipedia.org/wiki/Wikipedia:Chesterton%27s_fence).
 
+### Meta-files
 
-* `requirements.txt`: Contains the *pinned* versions of your requirement that
-  are used to run tests.
-
-* `.dockerignore`: Describes what files go in the docker container.
+* `.gitignore`: Files ignore by Git.
 
 * `.dtproject`: ...
 
-* `setup.py`: 
+* `.bumpversion.cfg`: Configuration for bumpversion
+
+* `Makefile`:
+
+### Python packaging
+
+* `requirements.txt`: Contains the *pinned* versions of your requirement that
+  are used to run tests. 
+   
+* `MANIFEST.in`:
+ 
+* `setup.py`: Containes meta information, definition of the scripts, and 
+  the dependencies information.   
+
+### Python code
+
+* `src/`
+
+* `src/duckietown_pondcleaner`
+
+### Docker testing
+
+These are files to build and run a testing container.
+
+* `.dockerignore`: Describes what files go in the docker container.
+
+* `Dockerfile`: ...
+
+### Sphinx
+
+### Coverage
+
+* `.coveragerc`: 
 
 
 
@@ -81,3 +113,11 @@ Python interpreter that will pick up the library installed in `./dist`.
 CLI tool `bumpversion` instead. If you need to include the version
 in a new file, list it inside the file `.bumpversion.cfg` using the
 syntax `[bumpversion:file:<FILE_PATH>]`.
+
+
+
+
+# Setting up
+
+* Activate on CircleCI. Make one build successful.
+* Activate on CodeCov. Get the CODECOV_TOKEN. Put this token in CircleCI environment. 
