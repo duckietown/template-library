@@ -1,4 +1,19 @@
-# Template: template-library
+
+[![CircleCI](https://circleci.com/gh/duckietown/template-library.svg?style=svg&circle-token
+=8bb1a7723db3a72ed58a7c2aa93ee088b43b1e80)](https://circleci.com/gh/idsc-frazzoli/template-library) See [details here
+](https://circleci.com/gh/duckietown/template-library).
+
+<!-- Note: there is a "branch" in the url -->
+
+[![codecov](https://codecov.io/gh/duckietown/driving-games/branch/daffy/graph/badge.svg?token=w8Sk4CKFpI)](https
+://codecov.io/gh/duckietown/template-library) (for daffy) 
+See [details](https://codecov.io/gh/duckietown/template-library).
+
+(You need to be logged in with Github account in both cases.) 
+
+
+
+# Template for pure Python libraries in Duckietown
 
 This template provides a boilerplate repository for developing 
 Python libraries in Duckietown.
@@ -11,7 +26,6 @@ Python libraries in Duckietown.
 Use the fork button in the top-right corner of the github page 
 to fork this template repository.
 
-
 ### 2. Create a new repository
 
 Create a new repository on github.com while specifying the newly 
@@ -22,7 +36,7 @@ forked template repository as a template for your new repository.
 
 Build a library by following these steps:
 - Clone the newly created repository;
-- Place your Python packages inside `include/`;
+- Place your Python packages inside `src/`;
 - List the python dependencies in the file `dependencies.txt`;
 - Update the appropriate section in the file `setup.py`;
 
