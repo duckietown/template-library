@@ -1,16 +1,12 @@
 
-[![CircleCI](https://circleci.com/gh/duckietown/template-library.svg?style=svg&circle-token
-=8bb1a7723db3a72ed58a7c2aa93ee088b43b1e80)](https://circleci.com/gh/idsc-frazzoli/template-library) See [details here
-](https://circleci.com/gh/duckietown/template-library).
+![CircleCI](https://circleci.com/gh/duckietown/template-library.svg?style=svg&circle-token=8bb1a7723db3a72ed58a7c2aa93ee088b43b1e80) 
+See [details here](https://circleci.com/gh/duckietown/template-library).
 
 <!-- Note: there is a "branch" in the url -->
 
-[![codecov](https://codecov.io/gh/duckietown/driving-games/branch/daffy/graph/badge.svg?token=w8Sk4CKFpI)](https
-://codecov.io/gh/duckietown/template-library) (for daffy) 
-See [details](https://codecov.io/gh/duckietown/template-library).
-
-(You need to be logged in with Github account in both cases.) 
-
+![codecov](https://codecov.io/gh/duckietown/driving-games/branch/daffy/graph/badge.svg?token=w8Sk4CKFpI) 
+See [details here](https://codecov.io/gh/duckietown/template-library) (for daffy).  
+ 
 
 
 # Template for pure Python libraries in Duckietown
