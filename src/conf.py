@@ -1,3 +1,6 @@
+import sys
+import os
+
 # -- Project information -----------------------------------------------------
 
 project = "Duckietown Pondcleaner"
@@ -19,6 +22,8 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
 ]
+
+sys.path.insert(0, os.path.abspath('.'))
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = []
