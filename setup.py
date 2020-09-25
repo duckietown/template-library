@@ -1,5 +1,3 @@
-import os
-
 from setuptools import find_packages, setup
 
 # :==> Fill in your project data here
@@ -13,11 +11,6 @@ short_description = 'A short description'
 full_description = """
 A longer description.
 """
-
-# read project details
-dt_project_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.dtproject')
-with open(dt_project_file, 'rt') as fin:
-    project = dict(map(lambda line: line.split('='), fin.read().splitlines()))
 
 # Read version from the __init__ file
 def get_version_from_source(filename):

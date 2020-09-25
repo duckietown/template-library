@@ -5,7 +5,6 @@ test_packages=duckietown_pondcleaner_tests
 cover_packages=$(test_packages),$(regular_packages)
 
 
-
 CIRCLE_NODE_INDEX ?= 0
 CIRCLE_NODE_TOTAL ?= 1
 
@@ -69,7 +68,6 @@ build:
 build-no-cache:
 	docker build --no-cache -t $(tag) .
 
-
 test-docker: build
 	docker run -it $(tag) make test
 
@@ -77,7 +75,7 @@ test-docker: build
 run:
 	mkdir -p out-docker
 	docker run -it -v $(PWD)/out-docker:/out $(tag) dt-pc-demo
-#
+
 run-with-mounted-src:
 	mkdir -p out-docker
 	docker run -it -v $(PWD)/src:/duckietown_pondcleaner/src:ro -v $(PWD)/out-docker:/out $(tag) dt-pc-demo
