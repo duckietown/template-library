@@ -20,6 +20,7 @@ jobs:
           name: Install deps
           command: |
             echo PATH=$PATH
+            pip install codecov pipdeptree
             pip install -q --user --upgrade -r requirements.txt
 
       - run:

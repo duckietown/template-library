@@ -94,13 +94,18 @@ bump-upload:
 	$(MAKE) bump
 	$(MAKE) upload
 
-bump:
+bump: # v2
 	bumpversion patch
-
-upload:
 	git push --tags
 	git push
+
+upload: # v3
+	dts build_utils check-not-dirty
+	dts build_utils check-tagged
+	dts build_utils check-need-upload --package duckietown-pondcleaner-daffy make upload-do
+
+upload-do:
 	rm -f dist/*
 	rm -rf src/*.egg-info
-	python setup.py sdist
-	twine upload dist/*
+	python3 setup.py sdist
+	twine upload --skip-existing --verbose dist/*
