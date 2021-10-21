@@ -15,4 +15,3 @@ Main entry points
 
 .. automodule:: duckietown_pondcleaner.demo
    :members:
-

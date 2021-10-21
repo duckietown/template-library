@@ -1,7 +1,8 @@
 import random
 from dataclasses import dataclass
 
-__all__ = ['CleaningResults', 'PondCleaner']
+__all__ = ["CleaningResults", "PondCleaner"]
+
 
 @dataclass
 class CleaningResults:
@@ -9,7 +10,6 @@ class CleaningResults:
 
 
 class PondCleaner:
-
     def clean(self) -> CleaningResults:
         garbage = random.uniform(0, 3)
         return CleaningResults(garbage)
