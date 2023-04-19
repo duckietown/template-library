@@ -68,8 +68,11 @@ instance/
 # Scrapy stuff:
 .scrapy
 
-# Sphinx documentation
-docs/_build/
+# documentation artifacts
+html/*
+!html/HTML_DOCS_WILL_BE_GENERATED_HERE
+pdf/*
+!pdf/PDF_WILL_BE_GENERATED_HERE
 
 # PyBuilder
 target/
