@@ -6,7 +6,7 @@ from setuptools import find_packages, setup
 package_name = "dt-pondcleaner"
 library_webpage = "http://github.com/duckietown/template-library"
 maintainer = "Mack"
-maintainer_email = "admin@duckietown.org"
+maintainer_email = "admin@duckietown.com"
 short_description = "A short description"
 full_description = """
 A longer description.
