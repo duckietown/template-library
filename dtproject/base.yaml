@@ -1,0 +1,4 @@
+#registry: docker.io
+organization: library
+repository: python
+tag: "3.11"

@@ -10,6 +10,10 @@ full_description = """
 <LONG_DESCRIPTION>
 """
 
+if "<" in package_name:
+    msg = "Please fill in the project data in setup.py."
+    raise ValueError(msg)
+
 
 # Read version from the __init__ file
 def get_version_from_source(filename):
