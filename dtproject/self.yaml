@@ -1,0 +1,6 @@
+name: "<LIBRARY_NAME_HERE>"
+maintainer:
+    name: "<YOUR_FULL_NAME>"
+    email: "<YOUR_EMAIL_ADDRESS>"
+description: "<LIBRARY_DESCRIPTION_HERE>"
+version: 0.0.0
