@@ -5,7 +5,7 @@ import os
 
 project = "Duckietown Pondcleaner"
 copyright = "Duckietown"
-author = "Mack"
+author = "Duckietown"
 
 # -- General configuration ---------------------------------------------------
 

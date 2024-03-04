@@ -40,21 +40,20 @@ clean:
 	coverage erase
 	rm -rf $(out) $(coverage_dir) $(tr)
 
-test: clean
-	mkdir -p  $(tr)
-	DISABLE_CONTRACTS=1 nosetests $(extra) $(coverage)  src  -v --nologcapture $(xunitmp)
+test:
+	nose2
 
 
 test-parallel: clean
 	mkdir -p  $(tr)
-	DISABLE_CONTRACTS=1 nosetests $(extra) $(coverage) src  -v --nologcapture $(parallel)
+	DISABLE_CONTRACTS=1 nose2 $(extra) $(coverage) -v --nologcapture $(parallel)
 
 
 test-parallel-circle:
 	DISABLE_CONTRACTS=1 \
 	NODE_TOTAL=$(CIRCLE_NODE_TOTAL) \
 	NODE_INDEX=$(CIRCLE_NODE_INDEX) \
-	nosetests $(coverage) $(xunitmp) src  -v  $(parallel)
+	nose2 $(coverage) $(xunitmp) -v  $(parallel)
 
 
 coverage-combine:
@@ -68,6 +67,7 @@ build:
 build-no-cache:
 	docker build --no-cache -t $(tag) .
 
+
 test-docker: build
 	docker run -it $(tag) make test
 
@@ -78,7 +78,7 @@ run:
 
 run-with-mounted-src:
 	mkdir -p out-docker
-	docker run -it -v $(PWD)/src:/duckietown_pondcleaner/src:ro -v $(PWD)/out-docker:/out $(tag) dt-pc-demo
+	docker run -it -v $(PWD)/src:/duckietown_pondcleaner/src:ro -v $(PWD)/out-docker:/out $(tag)
 
 
 coverage-report:
@@ -94,13 +94,12 @@ bump-upload:
 	$(MAKE) bump
 	$(MAKE) upload
 
-bump: # v2
+bump:
 	bumpversion patch
-	git push --tags
-	git push
-
 
 upload:
+	git push --tags
+	git push
 	rm -f dist/*
 	rm -rf src/*.egg-info
 	python3 setup.py sdist

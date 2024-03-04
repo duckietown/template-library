@@ -23,3 +23,6 @@ sphinx
 sphinx-rtd-theme
 
 jupyter
+
+# library deps
+# TODO: list project dependencies here

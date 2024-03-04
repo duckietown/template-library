@@ -1,32 +1,30 @@
 from setuptools import find_packages, setup
 
 # :==> Fill in your project data here
-# The package name is the name on PyPI
-# it is not the python module names.
-package_name = "dt-pondcleaner"
-library_webpage = "http://github.com/duckietown/template-library"
-maintainer = "Mack"
-maintainer_email = "admin@duckietown.com"
-short_description = "A short description"
+package_name = '<LIBRARY_NAME>'
+library_webpage = '<LIBRARY_WEB_PAGE>'
+maintainer = '<YOUR_FULL_NAME>'
+maintainer_email = '<YOUR_EMAIL_ADDRESS>'
+short_description = '<BRIEF_DESCRIPTION>'
 full_description = """
-A longer description.
+<LONG_DESCRIPTION>
 """
+
 
 # Read version from the __init__ file
 def get_version_from_source(filename):
     import ast
-
-    version = None
+    v = None
     with open(filename) as f:
         for line in f:
             if line.startswith("__version__"):
-                version = ast.parse(line).body[0].value.s
+                v = ast.parse(line).body[0].value.s
                 break
         else:
             raise ValueError("No version found in %r." % filename)
-    if version is None:
+    if v is None:
         raise ValueError(filename)
-    return version
+    return v
 
 
 version = get_version_from_source("src/duckietown_pondcleaner/__init__.py")
@@ -58,6 +56,7 @@ description = """
 console_scripts = [
     "dt-pc-demo = duckietown_pondcleaner:dt_pc_demo",
 ]
+
 # setup package
 setup(
     name=package_name,
