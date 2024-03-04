@@ -1,0 +1,84 @@
+version: 2
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test-3.7
+      - test-3.8
+jobs:
+  test-3.7: &test-template
+    environment:
+      COLUMNS: 160
+      # default is /usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      PATH: /root/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    docker:
+      - image: python:3.7
+    working_directory: ~/repo
+    steps: &steps
+      - checkout
+      - run:
+          name: Install deps
+          command: |
+            echo PATH=$PATH
+            pip install codecov pipdeptree
+            pip install -q --user --upgrade -r requirements.txt
+
+      - run:
+          name: List deps
+          command: |
+            mkdir -p artifacts
+            pip list | tee artifacts/pip-list.txt
+            pipdeptree | tee artifacts/pipdeptree.txt
+      - run:
+          name: setup.py develop
+          command: |
+            python setup.py develop --prefix ~/.local --no-deps
+
+      - run:
+          name: Make docs
+          command: |
+            make docs
+      - run:
+          name: Notebooks
+          command: |
+            make -C notebooks cleanup all
+
+      - run:
+          name: Run tests
+          command: |
+            make test
+
+      - store_test_results:
+          when: always
+          path: out/test-results
+
+      - run:
+          name: Coverage report
+          when: always
+          command: |
+            make coverage-combine
+            make coverage-report
+            coverage xml
+
+
+      - store_artifacts:
+          when: always
+          path: out/coverage
+          destination: coverage
+
+      - store_artifacts:
+          when: always
+          path: out/tests
+          destination: tests
+
+      - run:
+          name: CodeCov
+          when: always
+          command: |
+            codecov
+
+
+  test-3.8:
+    <<: *test-template
+    docker:
+      - image: python:3.8

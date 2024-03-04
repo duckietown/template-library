@@ -1,0 +1,8 @@
+**
+!setup.py
+!src
+src/*.egg-info
+!Makefile*
+!requirements*
+!.compmake.rc
+!.dtproject
